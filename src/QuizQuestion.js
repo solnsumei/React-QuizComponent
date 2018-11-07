@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 import QuizQuestionButton from './QuizQuestionButton';
 
+/**
+ * @description Class that shows quiz question
+ * @class QuizQuestion
+ * @extends {Component}
+ */
 class QuizQuestion extends Component {
 
   constructor(props) {
@@ -10,6 +15,13 @@ class QuizQuestion extends Component {
     this.state = { incorrectAnswer: false };
   }
 
+  /**
+   * @description Method to submit answer by button click
+   * @memberof QuizQuestion
+   * @param {String} buttonText
+   * 
+   * @returns {void}
+   */
   handleClick(buttonText) {
     if (buttonText === this.props.quiz_question.answer) {
       this.setState({ 
@@ -27,8 +39,7 @@ class QuizQuestion extends Component {
   render() {
     return (
       <main>
-        {this.state.incorrectAnswer && <p className="error">Sorry, that's not right</p>}
-        <section>
+        <section className="QuizQuestion" >
           <p>{this.props.quiz_question.instruction_text}</p>
         </section>
         <section className="buttons" >
@@ -41,7 +52,8 @@ class QuizQuestion extends Component {
               )
             }
           </ul> 
-        </section>   
+        </section> 
+        {this.state.incorrectAnswer && < p className = "error"> Sorry, that's not right</p>}  
       </main>
     );
   }
